@@ -1,4 +1,5 @@
 'use client'; // ESSENCIAL: Permite interatividade como o clique no botão
+import { sendGAEvent } from '@next/third-parties/google';
 
 import React from 'react';
 import Image from 'next/image';
@@ -45,7 +46,8 @@ export default function Home() {
       </section>
 
       {/* SEÇÃO DE NÚMEROS */}
-      <section className="relative z-30 lg:-mt-16 pb-20 mt-8 lg:mt-0">
+      {/*<section className="relative z-30 lg:-mt-16 pb-20 mt-8 lg:mt-0">*/}
+      <section className="pt-28 pb-20 bg-gry-50">
         <div className="container mx-auto px-6">
           <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center border border-gray-100">
             <div className="flex flex-col items-center">
@@ -67,7 +69,7 @@ export default function Home() {
       {/* SEÇÃO GALERIA (Grid Moderna) */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6 text-center mb-12">
-          <h2 className="text-4xl font-black text-blue-900 mb-4">Projetos Entregues</h2>
+          <h2 className="text-4xl font-black text-blue-900 mb-4">Construção de piscinas</h2>
           <p className="text-gray-600 uppercase tracking-widest font-bold text-sm">Qualidade em cada detalhe</p>
         </div>
         <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -89,16 +91,16 @@ export default function Home() {
               className="object-cover transition-transform duration-700 group-hover:scale-110" 
             />
           </div>
-          <div className="relative h-64 md:h-80 overflow-hidden rounded-2xl group border border-gray-100 shadow-inner">
+          {/* Imagem 3 - PISCINA COM LED AZUL (LINK TESTADO) */}
+          <div className="relative h-64 md:h-80 overflow-hidden rounded-2xl group border border-gray-100 shadow-lg">
             <Image 
-              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop" 
-              alt="Piscina de alvenaria com iluminação LED azul noturna" 
+              src="https://images.unsplash.com/photo-1491510736257-3ad769ff47b6?w=1000&auto=format&fit=crop" 
+              alt="Piscina de alvenaria com água azul cristalina e borda de pedra, cercada por um jardim tropical exuberante com coqueiros ao pôr do sol" 
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover transition-transform duration-700 group-hover:scale-110" 
               priority
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
           </div>
         </div>
       </section>
@@ -170,8 +172,21 @@ export default function Home() {
                 onSubmit={(e) => {
                   e.preventDefault();
                   const formData = new FormData(e.currentTarget);
-                  const msg = `Olá Rafael! Meu nome é ${formData.get('nome')}. Gostaria de um orçamento para uma área de ${formData.get('area')}.`;
-                  window.open(`https://wa.me/5569993041891?text=${encodeURIComponent(msg)}`, '_blank');
+                  const nome = formData.get('nome');
+                  const area = formData.get('area');
+
+                  // Emoji de onda 🌊 é mais leve e costuma não dar erro de leitura
+                  const msg = `🌊 Olá Rafael! Meu nome é ${nome}. Gostaria de um orçamento para uma área de ${area}.`;
+
+                  // O número corrigido de Porto Velho (DDD 69 + 9 + número)
+                  // No seu estava: 5569993041891 (13 dígitos). O correto é 556993041891 (12 dígitos com o 55)
+                  // Se o número for (69) 99304-1891, use: 5569993041891
+                  const telefone = "5569993041891"; 
+
+                  const linkWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`;
+                  
+                  // Abre o WhatsApp
+                  window.open(linkWhatsApp, '_blank');
                 }}
               >
                 {/* Campo Nome */}
@@ -183,7 +198,7 @@ export default function Home() {
                     required 
                     type="text" 
                     placeholder="Digite seu nome completo"
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
                   />
                 </div>
 
@@ -196,13 +211,13 @@ export default function Home() {
                     required 
                     type="text" 
                     placeholder="Ex: 6x3m ou 40m²" 
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border-none outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none focus:ring-2 focus:ring-blue-500 text-gray-900" 
                   />
                 </div>
 
-                {/* BOTÃO AGORA COM MARGEM SUPERIOR PARA NÃO SUMIR */}
                 <button 
                   type="submit" 
+                  onClick={() => sendGAEvent({ event: 'button_click', value: 'enviar_formulario_whatsapp' })}
                   className="w-full bg-blue-600 text-white font-black py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg mt-2"
                 >
                   ENVIAR NO WHATSAPP
