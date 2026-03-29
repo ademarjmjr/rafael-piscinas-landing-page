@@ -175,21 +175,20 @@ export default function Home() {
                   const nome = formData.get('nome');
                   const area = formData.get('area');
 
-                  // Emoji de onda 🌊 é mais leve e costuma não dar erro de leitura
-                  const msg = `🌊 Olá Rafael! Meu nome é ${nome}. Gostaria de um orçamento para uma área de ${area}.`;
+                  // Usaremos a ONDA (🌊) porque é um dos emojis mais compatíveis do mundo
+                  const emojiPiscina = "🌊"; 
+                  const msg = `${emojiPiscina} Olá Rafael! Meu nome é ${nome}. Gostaria de um orçamento para uma área de ${area}.`;
 
-                  // O número corrigido de Porto Velho (DDD 69 + 9 + número)
-                  // No seu estava: 5569993041891 (13 dígitos). O correto é 556993041891 (12 dígitos com o 55)
-                  // Se o número for (69) 99304-1891, use: 5569993041891
+                  // Número do Rafael (Confira se é 99304 ou 9304. Se for 9304, remova um '9')
                   const telefone = "5569993041891"; 
 
+                  // O encodeURIComponent é o que impede a interrogação de aparecer!
                   const linkWhatsApp = `https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`;
                   
-                  // Abre o WhatsApp
                   window.open(linkWhatsApp, '_blank');
                 }}
               >
-                {/* Campo Nome */}
+                {/* Campos de Nome e Área */}
                 <div>
                   <label htmlFor="nome" className="block text-sm font-bold mb-1">Seu Nome</label>
                   <input 
@@ -202,7 +201,6 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Campo Área */}
                 <div>
                   <label htmlFor="area" className="block text-sm font-bold mb-1">Área da Piscina (m²)</label>
                   <input 
