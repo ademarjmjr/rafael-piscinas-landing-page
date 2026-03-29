@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏊‍♂️ Rafael Piscinas | Landing Page Profissional
 
-## Getting Started
+Landing Page de alta conversão desenvolvida para **Rafael Piscinas**, especialista em construção e reforma de piscinas de alvenaria e concreto em Porto Velho - RO.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Tecnologias e Ferramentas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Framework:** [Next.js 15+](https://nextjs.org/) (App Router)
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+* **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+* **Analytics:** Google Analytics 4 (GA4) via `@next/third-parties`
+* **Hospedagem:** [Vercel](https://vercel.com/)
+* **Versionamento:** GitHub Desktop
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Diferenciais do Projeto
 
-## Learn More
+### 📱 Experiência do Usuário (UX) para o Cliente
+Como o proprietário (Rafael) utiliza o WhatsApp Business como principal canal de vendas e prefere comunicações visuais, implementei um **Identificador por Emoji**:
+* Toda mensagem vinda do site inicia com o emoji **`🌊`**.
+* Isso permite que o Rafael identifique instantaneamente que o contato é um "Lead quente" vindo da internet, sem precisar ler o texto completo de imediato.
 
-To learn more about Next.js, take a look at the following resources:
+### 📈 Rastreamento e Métricas
+O site não é apenas um cartão de visitas, é uma ferramenta de marketing:
+* **Google Analytics 4:** Configurado via variáveis de ambiente seguras.
+* **Eventos Personalizados:** O sistema rastreia cliques no botão de envio (`button_click`) para medir o interesse real dos usuários.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ⚡ Performance e SEO
+* Uso do componente `next/image` para carregamento otimizado de fotos de alta resolução.
+* Design totalmente responsivo (Mobile-First).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Instalação e Configuração Local
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Se desejar rodar este projeto na sua máquina:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/ademarjmjr/rafael-piscinas-landing-page.git](https://github.com/ademarjmjr/rafael-piscinas-landing-page.git)
+    ```
+
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure as Variáveis de Ambiente:**
+    Crie um arquivo `.env.local` na raiz e adicione:
+    ```env
+    NEXT_PUBLIC_GA_ID=G-FY0FH456B1
+    ```
+
+4.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+    Acesse: `http://localhost:3000`
+
+---
+
+## 📦 Deploy na Vercel
+
+O deploy foi realizado conectando o repositório do GitHub à Vercel. As variáveis de ambiente foram configuradas diretamente no painel da Vercel para garantir a segurança das chaves de API.
+
+---
+
+## 👤 Desenvolvedor
+
+Projeto desenvolvido com foco em soluções práticas para empresas locais.
+
+* **Nome:** Ademar José Martins Junior
+* **Localização:** Porto Velho, RO
+* **Especialidade:** Eletrônica e Desenvolvimento de Software (Flutter/Next.js)
+
+---
+*Este projeto faz parte de um portfólio de soluções digitais para prestadores de serviço.*
